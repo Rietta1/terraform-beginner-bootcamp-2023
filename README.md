@@ -337,3 +337,5 @@ output "random_bucket_name" {
 
 ```
 - run `terraform init` , then `terraform plan` then `terraform apply --auto-approve` , then `terraform destroy`
+
+** ERROR: when we tried to create the s3 bucket, we had to use lower cases to **
