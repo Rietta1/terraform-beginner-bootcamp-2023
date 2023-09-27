@@ -337,3 +337,27 @@ output "random_bucket_name" {
 
 ```
 - run `terraform init` , then `terraform plan` then `terraform apply --auto-approve` , then `terraform destroy`
+
+### migrate local state to terraform cloud using terraform cloud block
+
+`.terraform` directory contains binaries of terraform providers.
+
+#### Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login` it will launch bash a wiswig view to generate a token. However it does not work expected in Gitpod VsCode in the browser.
+
+- The workaround is manually generate a token in Terraform Cloud by coping this link and pasting it in a browser.
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+
+- Then go to your gitpod and quit by typing `q` and enter
+
+- Then paste the token generated in the terminal with the new prompt showing
+- Then `terrafom init` , it would initalize and ask you if you want to copy your statefile, type yes and it would be copied
+
+```
+git stash save 
+git stash apply
+```
