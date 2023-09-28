@@ -360,4 +360,9 @@ https://app.terraform.io/app/settings/tokens?source=terraform-login
 ```
 git stash save 
 git stash apply
+git stash list
 ```
+
+#### Error fixing and automate (generate workaround for terraform login with gitpod)
+
+We have automated this workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
