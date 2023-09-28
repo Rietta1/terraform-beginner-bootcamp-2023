@@ -366,3 +366,14 @@ git stash list
 #### Error fixing and automate (generate workaround for terraform login with gitpod)
 
 We have automated this workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
+
+
+#### Shorten the command terrform to tf, 
+
+this method is done just like the way we shorten kubernates to k8s,
+
+- To do this, you add alias to your bash_profile `open ~/.bash_profile` 
+*this is where we can set bash configurations, like seting env var that will be scope for everything*, 
+-  add `alias tf="terraform"` then reload `source ~/.bash_profile`, now you can type tf.
+
+- then to set it up in a bash profile, create a file `bin/set_tf_alias` and add your scripts , then chmod u+x ./bin/set_tf_alias and run ./bin/set_tf_alias , then add it to your gitpod.yml file
