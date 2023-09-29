@@ -1,15 +1,4 @@
-# Terraform Beginner Bootcamp 2023
-
-
-![architectural-diagram](https://github.com/omenking/terraform-beginner-bootcamp-2023/assets/7776/ab015431-2d14-4910-aa37-be4807b2b905)
-
-
-## Weekly Journals
-- [Week 0 Journal](journal/week0.md)
-- [Week 1 Journal](journal/week1.md)
-
-## Extras
-- [Github Markdown TOC Generator](https://ecotrust-canada.github.io/markdown-toc/)
+# Terraform Beginner Bootcamp 2023 -Week 0
 
 - [Semantic Versioning](#semantic-versioning)
 - [Install the Terraform CLI](#install-the-terraform-cli)
@@ -38,7 +27,9 @@
     + [Terraform State Files](#terraform-state-files)
     + [Terraform Directory](#terraform-directory)
     + [Steps carried out here](#steps-carried-out-here)
-- [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace)
+  + [Migrate local state to terraform cloud using terraform cloud block](#migrate-local-state-to-terraform-cloud-using-terraform-cloud-block)
+    + [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace)
+    + [Shorten the command terrform to tf](#shorten-the-command-terrform-to-tf)
 
 
 ## Semantic Versioning 
@@ -135,21 +126,21 @@ chmod 744 ./bin/install_terraform_cli
 
 https://en.wikipedia.org/wiki/Chmod
 
-### Github Lifecycle (Before, Init, Command)
+## Github Lifecycle 
 
 We need to be careful when using the Init because it will not rerun if we restart an existing workspace.
 
 https://www.gitpod.io/docs/configure/workspaces/tasks
 
-### Working Env Vars
+## Working Env Vars
 
-#### env command
+### env command
 
 We can list out all Enviroment Variables (Env Vars) using the `env` command
 
 We can filter specific env vars using grep eg. `env | grep AWS_`
 
-#### Setting and Unsetting Env Vars
+### Setting and Unsetting Env Vars
 
 In the terminal we can set using `export HELLO='world`
 
@@ -170,17 +161,17 @@ HELLO='world'
 echo $HELLO
 ```
 
-#### Printing Vars
+### Printing Vars
 
 We can print an env var using echo eg. `echo $HELLO`
 
-#### Scoping of Env Vars
+### Scoping of Env Vars
 
 When you open up new bash terminals in VSCode it will not be aware of env vars that you have set in another window.
 
 If you want to Env Vars to persist across all future bash terminals that are open you need to set env vars in your bash profile. eg. `.bash_profile`
 
-#### Persisting Env Vars in Gitpod
+### Persisting Env Vars in Gitpod
 
 We can persist env vars into gitpod by storing them in Gitpod Secrets Storage.
 
@@ -192,7 +183,7 @@ All future workspaces launched will set the env vars for all bash terminals open
 
 You can also set en vars in the `.gitpod.yml` but this can only contain non-senstive env vars.
 
-### AWS CLI Installation
+## AWS CLI Installation
 
 
 AWS CLI is installed for the project via the bash script [`./bin/install_aws_cli`](./bin/install_aws_cli)
@@ -300,7 +291,7 @@ If you lose this file, you lose knowning the state of your infrastructure.
 
 `.terraform` directory contains binaries of terraform providers.
 
-### Steps carried out here
+#### Steps carried out here
 
 - create a file name `main.tf` and add these codes to create random buckets to it to it
 
@@ -408,7 +399,7 @@ git stash list
 We have automated this workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
 
 
-#### Shorten the command terrform to tf, 
+#### Shorten the command terrform to tf 
 
 this method is done just like the way we shorten kubernates to k8s,
 
