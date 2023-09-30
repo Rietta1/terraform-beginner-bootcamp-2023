@@ -389,6 +389,7 @@ https://app.terraform.io/app/settings/tokens?source=terraform-login
 - Then `terrafom init` , it would initalize and ask you if you want to copy your statefile, type yes and it would be copied
 
 ```
+git add .
 git stash save 
 git stash apply
 git stash list
