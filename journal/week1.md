@@ -314,3 +314,20 @@ https://developer.hashicorp.com/terraform/language/resources/provisioners/remote
 #### Steps here to invalidate cloudfront stack when content version changes
 - cloudfront_url added to both outputs.tf files
 - resource "terraform_data" "invalidate_cache" added to resource-cdn.tf for caching
+
+
+https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec
+
+## For Each Expressions
+
+For each allows us to enumerate over complex data types
+
+```sh
+[for s in var.list : upper(s)]
+```
+
+This is mostly useful when you are creating multiples of a cloud resource and you want to reduce the amount of repetitive terraform code.
+
+[For Each Expressions](https://developer.hashicorp.com/terraform/language/expressions/for)
+  12 changes: 12 additions & 0 deletions12  
+modules/terrahouse_aws/resource-storage.tf
