@@ -50,4 +50,16 @@ variable "content_version" {
     error_message = "The content_version must be a positive integer starting at 1."
   }
 
+  }
+
+variable "assets_path" {
+  description = "Path to assets folder"
+  type = string
+
+  validation {
+  condition     = length(fileset(var.assets_path, "*.*")) > 0
+  error_message = "The provided path for assets_path does not exist."
+
+  }
+
 }
