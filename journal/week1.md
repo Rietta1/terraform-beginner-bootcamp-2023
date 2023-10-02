@@ -255,6 +255,62 @@ Plain data values such as Local Values and Input Variables don't have any side-e
 
 https://developer.hashicorp.com/terraform/language/resources/terraform-data
 
-#### Steps here
+#### Steps here for content version changes
 - Terraform lifecycle: allows you to control when a resource gets created, updated or deleted .
 - so we set it to  only upload index.html if a content version has change.
+
+
+https://developer.hashicorp.com/terraform/language/resources/terraform-data
+
+## Provisioners
+
+Provisioners allow you to execute commands on compute instances eg. a AWS CLI command.
+
+They are not recommended for use by Hashicorp because Configuration Management tools such as Ansible are a better fit, but the functionality exists.
+
+[Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)
+
+### Local-exec
+
+This will execute command on the machine running the terraform commands eg. plan apply
+
+```tf
+resource "aws_instance" "web" {
+  # ...
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+}
+```
+
+https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec
+
+### Remote-exec
+
+This will execute commands on a machine which you target. You will need to provide credentials such as ssh to get into the machine.
+
+```tf
+resource "aws_instance" "web" {
+  # ...
+  # Establishes connection to be used by all
+  # generic remote provisioners (i.e. file/remote-exec)
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.root_password
+    host     = self.public_ip
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
+```
+https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec
+
+
+#### Steps here to invalidate cloudfront stack when content version changes
+- cloudfront_url added to both outputs.tf files
+- resource "terraform_data" "invalidate_cache" added to resource-cdn.tf for caching
