@@ -242,3 +242,19 @@ The terraform files in the `modules/terrahouse_aws` was restructured
 - the cloudfront configuration is placed in `resource-cdn.tf`
 
 - website details is placed in the `public` folder
+
+
+### Changing the Lifecycle of Resources
+
+[Meta Arguments Lifcycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+
+
+## Terraform Data
+
+Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in replace_triggered_by. You can use terraform_data's behavior of planning an action each time input changes to indirectly use a plain value to trigger replacement.
+
+https://developer.hashicorp.com/terraform/language/resources/terraform-data
+
+#### Steps here
+- Terraform lifecycle: allows you to control when a resource gets created, updated or deleted .
+- so we set it to  only upload index.html if a content version has change.
