@@ -18,6 +18,7 @@ git stash save
 
 #switch branch then
 
+
 git stash apply
 git stash list
 ```
